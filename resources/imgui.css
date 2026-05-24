@@ -1,0 +1,393 @@
+/* ══════════════════════════
+   IMGUI-STYLE INSPECTOR
+══════════════════════════ */
+
+/* Object Header */
+.inspector-object-header {
+  padding: 12px 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.inspector-obj-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.inspector-obj-icon {
+  font-size: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.inspector-obj-name {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-bright);
+  outline: none;
+  min-width: 0;
+}
+
+.inspector-obj-name:focus {
+  border-color: var(--accent-dim);
+}
+
+.inspector-obj-active {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.inspector-obj-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.inspector-tag-select {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  outline: none;
+  appearance: none;
+}
+
+/* Component Block */
+.component-block {
+  border-bottom: 1px solid var(--border);
+}
+
+.component-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+}
+
+.component-header:hover {
+  background: var(--bg-hover);
+}
+
+.component-collapse-arrow {
+  font-size: 8px;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.component-collapse-arrow.open {
+  transform: rotate(90deg);
+}
+
+.component-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.component-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.component-menu-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.1s;
+  opacity: 0;
+}
+
+.component-header:hover .component-menu-btn {
+  opacity: 1;
+}
+
+.component-menu-btn:hover {
+  background: var(--bg-active);
+  color: var(--text-primary);
+}
+
+.component-body {
+  padding: 4px 12px 10px;
+}
+
+.component-body.collapsed {
+  display: none;
+}
+
+/* Field Rows */
+.field-row {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  margin-bottom: 4px;
+  gap: 6px;
+}
+
+.field-label {
+  width: 80px;
+  min-width: 80px;
+  font-size: 11px;
+  color: var(--text-muted);
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+.field-inputs {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+}
+
+/* Number Input with axis label */
+.axis-input {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.axis-label {
+  width: 14px;
+  min-width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--bg-active);
+  user-select: none;
+}
+
+.axis-label.x { color: var(--gizmo-x); }
+.axis-label.y { color: var(--gizmo-y); }
+.axis-label.z { color: var(--gizmo-z); }
+
+.axis-input input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-left: none;
+  padding: 3px 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.1s;
+}
+
+.axis-input input:focus {
+  border-color: var(--accent-dim);
+  background: rgba(74,240,208,0.03);
+}
+
+/* Color input */
+.color-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.color-swatch input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.color-hex-input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  outline: none;
+  min-width: 0;
+}
+
+.color-hex-input:focus {
+  border-color: var(--accent-dim);
+}
+
+/* Select field */
+.field-select {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.field-select:focus {
+  border-color: var(--accent-dim);
+}
+
+/* Toggle */
+.field-toggle {
+  width: 32px;
+  height: 16px;
+  background: var(--bg-active);
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid var(--border);
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.field-toggle.on {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.field-toggle-knob {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.field-toggle.on .field-toggle-knob {
+  transform: translateX(16px);
+  background: #fff;
+}
+
+/* Add Component Button */
+.add-component-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: calc(100% - 24px);
+  margin: 12px;
+  padding: 8px;
+  background: var(--bg-input);
+  border: 1px dashed var(--border);
+  border-radius: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: all 0.15s;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+}
+
+.add-component-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* Component Picker Popup */
+.component-picker {
+  position: fixed;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 6px;
+  z-index: 1000;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.component-picker-search {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--text-primary);
+  outline: none;
+  margin-bottom: 6px;
+}
+
+.component-picker-search:focus {
+  border-color: var(--accent-dim);
+}
+
+.component-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all 0.1s;
+}
+
+.component-picker-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.component-picker-item .cpi-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.component-picker-cat {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 10px 4px;
+}
